@@ -1,4 +1,4 @@
-// auth
+// (auth)
 export const LOGIN = "/login/user_login";
 export const VALIDATE_TOKEN = "/login/validate";
 export const REFRESH_TOKEN = "/login/refresh_token";
