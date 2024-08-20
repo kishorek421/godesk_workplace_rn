@@ -6,3 +6,8 @@ export interface PaginatorModel {
   totalPages?: number;
   lastPage?: boolean;
 }
+
+export interface DropdownModel {
+  label?: string;
+  value?: string;
+}
