@@ -26,12 +26,18 @@ export default function RootLayout() {
   }
 
   return (
-    <GluestackUIProvider mode="light"><AuthProvider>
+    <GluestackUIProvider mode="light">
+      <AuthProvider>
         <Stack>
-          <Stack.Screen name="index" options={{ headerShown: false }} />
+          <Stack.Screen
+            name="index"
+            options={{ headerShown: false, title: "Home" }}
+          />
           <Stack.Screen name="(auth)" options={{ headerShown: false }} />
+          <Stack.Screen name="(root)" options={{ headerShown: false }} />
           <Stack.Screen name="+not-found" />
         </Stack>
-      </AuthProvider></GluestackUIProvider>
+      </AuthProvider>
+    </GluestackUIProvider>
   );
 }

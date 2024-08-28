@@ -51,13 +51,14 @@ const ConfigurationSelect = ({
           <SelectDragIndicatorWrapper>
             <SelectDragIndicator />
           </SelectDragIndicatorWrapper>
-          {options.map((value) => (
-            <SelectItem
-              label={value.value ?? "-"}
-              value={value.id ?? ""}
-              key={value.id}
-            />
-          ))}
+          {options &&
+            options.map((value) => (
+              <SelectItem
+                label={value.value ?? "-"}
+                value={value.id ?? ""}
+                key={value.id}
+              />
+            ))}
         </SelectContent>
       </SelectPortal>
     </Select>

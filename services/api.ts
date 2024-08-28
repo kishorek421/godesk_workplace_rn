@@ -1,7 +1,7 @@
 import { BASE_URL } from "@/config/env";
 import { AUTH_TOKEN_KEY, REFRESH_TOKEN_KEY } from "@/constants/storage_keys";
 import axios from "axios";
-import { getItem, setItem } from "@/utils/secure_store";
+import { getItem, removeItem, setItem } from "@/utils/secure_store";
 
 const api = axios.create({
   baseURL: BASE_URL,
@@ -14,9 +14,14 @@ const api = axios.create({
 api.interceptors.request.use(
   async (config) => {
     // console.log(config);
+    await setItem(
+      AUTH_TOKEN_KEY,
+      "eyJhbGciOiJIUzUxMiJ9.eyJwYXNzd29yZCI6IjB6bHBrRko0SVRWZWhXSDNSeXRVTVByRTl3VlNHcUdaUUF3djRSNnIvOEk9Iiwicm9sZSI6WyJDVVNUT01FUiJdLCJpZCI6ImI5NGViMjg5LTU2M2UtNGEwNC1iNTU4LTEzNGNmMmI0YmQ3OCIsInVzZXJPcmdEZXRhaWxzIjp7ImxlYWRJZCI6IjVmZjg1NzNlLTJiYmQtNDdkNy1hNTFmLTA1MDkxYjgwOGRlNCIsIm9yZ0lkIjoiYjBiYzhiZTUtZTRlYi00NTAzLWE4MTMtMTNiOTdiNzZjNzczIiwib3JnRGVwYXJ0bWVudElkIjoiNGFiNjRkMDMtNDZiYy00MTIwLTkwNDUtOWJlM2MxNDcyODgzIiwib3JnRGVzaWduYXRpb25JZCI6IjZkODBkMWViLTViNTctNDk0ZS1iNzNhLWQ1ZTg3ODZlMDdjMCJ9LCJlbWFpbCI6ImN1c3RvbWVyMUBnbWFpbC5jb20iLCJ1c2VybmFtZSI6IlJhanUiLCJzdWIiOiJjdXN0b21lcjFAZ21haWwuY29tIiwiaWF0IjoxNzI0ODMwMzM3LCJleHAiOjE3MjQ4NTkxMzd9.0uEtgzWyEcas4xu313UO3rZ7HJtpawXw_pOc_qWOxEEyM3SU7RZO4gsLE6bVQDQmpTESB1mAYlQ8tTP0z8p36w",
+    );
     const token = await getItem(AUTH_TOKEN_KEY);
     if (token) {
       config.headers.Authorization = `Bearer ${token}`;
+      // await removeItem(AUTH_TOKEN_KEY);
     }
     return config;
   },
@@ -35,7 +40,7 @@ api.interceptors.response.use(
     if (error.response && error.response.status === 401) {
       console.error("Unauthorized, logging out...");
     }
-    console.error("API Error:", error);
+    console.error("API Error:", error.response);
     return Promise.reject(error);
   },
 );

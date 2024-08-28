@@ -30,7 +30,10 @@
     },
     "plugins": [
       "expo-router",
-      "expo-secure-store"
+      "expo-secure-store",
+      "expo-asset",
+      "expo-image-picker"
+
     ],
     "experiments": {
       "typedRoutes": true

@@ -48,6 +48,7 @@ export interface CustomerLeadDetailsModel {
   pincodeId?: string;
   areaId?: string;
   onBoardingStatusDetails?: ConfigurationModel;
+  isCustomerLead?: boolean;
 }
 
 export interface CustomerDetailsModel {

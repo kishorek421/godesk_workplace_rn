@@ -12,7 +12,7 @@ export interface TicketListItemModel {
   dueBy?: string;
   assetInUseDetails?: AssetInUseListItemModel;
   assetSubTypeDetails?: AssetSubTypeListItemModel;
-  ticketStatusDetails?: ConfigurationModel;
+  statusDetails?: ConfigurationModel;
   priorityDetails?: ConfigurationModel;
   ticketTypeDetails?: ConfigurationModel;
   serviceTypeDetails?: ConfigurationModel;

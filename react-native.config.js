@@ -1,3 +1,9 @@
 module.exports = {
-  assets: ["node_modules/@ant-design/icons-react-native/fonts"],
+  dependencies: {
+    "react-native-vector-icons": {
+      platforms: {
+        ios: null,
+      },
+    },
+  },
 };
